@@ -7,5 +7,11 @@
     "node_modules/*",
     "__sapper__/*",
     "public/*"
-  ]
+  ],
+  "compilerOptions": {
+    "paths": {
+      "src/*": ["./src/*"],
+      "metronome/*": ["./src/metronome/*"]
+    }
+  }
 }

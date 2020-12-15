@@ -7,6 +7,10 @@ import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
 import sveltePreprocess from 'svelte-preprocess';
 import svelteSVG from "rollup-plugin-svelte-svg";
+import alias from '@rollup/plugin-alias';
+import path from 'path'
+
+const projectRootDir = path.resolve(__dirname);
 
 const production = !process.env.ROLLUP_WATCH;
 const preprocess = sveltePreprocess({
@@ -62,6 +66,15 @@ export default {
 
 		// Processed imports from svg
 		svelteSVG(),
+
+		alias({
+			entries: [
+				{ 
+					find: 'src',
+					replacement: path.resolve(projectRootDir, 'src')
+				}
+			]
+		}),
 
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In
